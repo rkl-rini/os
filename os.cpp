@@ -19,3 +19,8 @@ void Need(int need[P][R], int max[P][R],
 			// Need = max value of instance - allocated value of instance 
 			need[i][j] = max[i][j] - allot[i][j]; 
 } 
+// creating the function to find if the system is in safe state  
+bool Safe(int processes[], int avail[], int max[][R], 
+			int allot[][R]) 
+{ 
+	int need[P][R]; 
