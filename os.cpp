@@ -35,3 +35,44 @@ bool Safe(int processes[], int avail[], int max[][R],
 	int work[R]; 
 	for (int i = 0; i < R ; i++) 
 		work[i] = avail[i]; 
+    // If the processes are not yet finished or system is not in safe state. 
+	int count = 0; 
+	while (count < P) 
+	{ 
+		// to find the process that is not yet finished and to allocate 
+		//resources to the processes whose needs can be 
+		//satisfied using current resources 
+		bool found = false; 
+		for (int p = 0; p < P; p++) 
+		{ 
+			// First check if a process is finished, 
+			// if no move onto the next condition 
+			if (finish[p] == 0) 
+			{ 
+				// Check if for all resources of 
+				// current Process, need is less than work 
+				int j; 
+				for (j = 0; j < R; j++) 
+					if (need[p][j] > work[j]) 
+						break; 
+
+				// If all needs of p were satisfied. 
+				if (j == R) 
+				{ 
+					// Add the allocated resources of 
+					// current P to the available/work 
+					// resources that is the free the resources 
+					for (int k = 0 ; k < R ; k++) 
+						work[k] += allot[p][k]; 
+
+					// Add this process to safe sequence. 
+					safeSeq[count++] = p; 
+
+					// Mark this process as finished 
+					finish[p] = 1; 
+
+					found = true; 
+				} 
+			} 
+		} 
+
