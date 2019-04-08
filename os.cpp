@@ -24,3 +24,14 @@ bool Safe(int processes[], int avail[], int max[][R],
 			int allot[][R]) 
 { 
 	int need[P][R]; 
+    	// creating the need matrix
+	Need(need, max, allot); 
+	bool finish[P] = {0}; 
+
+	// To store the safe sequence of the requests 
+	int safeSeq[P]; 
+
+	// Duplicate and make a copy of available resources 
+	int work[R]; 
+	for (int i = 0; i < R ; i++) 
+		work[i] = avail[i]; 
