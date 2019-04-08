@@ -1,22 +1,21 @@
-// C++ program to illustrate Banker's Algorithm 
+// Question number 20 of the assignment showing the use of banker's algorithm
 #include<iostream> 
 using namespace std; 
 
-// Number of processes 
+// to store the number of processes 
 const int P = 3; 
 
-// Number of resources 
+// to store the number of resources 
 const int R = 3; 
 
-// Function to find the need of each process 
-void calculateNeed(int need[P][R], int maxm[P][R], 
+// Creating a function to calculate the need of every process
+void Need(int need[P][R], int max[P][R], 
 				int allot[P][R]) 
 { 
-	// Calculating Need of each P 
+	// Loop to calculate the Need of each Process 
 	for (int i = 0 ; i < P ; i++) 
 		for (int j = 0 ; j < R ; j++) 
 
-			// Need of instance = maxm instance - 
-			//				 allocated instance 
-			need[i][j] = maxm[i][j] - allot[i][j]; 
+			// Need = max value of instance - allocated value of instance 
+			need[i][j] = max[i][j] - allot[i][j]; 
 } 
